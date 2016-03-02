@@ -1,5 +1,7 @@
 package blocking
 import lib._
+//import scalaz.concurrent.Task
+
 case class Person(name: String, livesAt: Int, isRich: Boolean)
 case class Address(city: String)
 
@@ -8,7 +10,7 @@ object DAO{
   def addressById(id: Int): Address = ???
 }
 
-object Blocking extends App{
+object Main extends App{
 
   println( showPerson(1) )
 
@@ -16,12 +18,12 @@ object Blocking extends App{
     val start = now()
     val p = DAO.personById(id)
     logger.log("retrieved person")
-    val suffix = (
+    val result = p.name ++ (
       if(p.isRich)
         " is rich and lives in " ++ DAO.addressById( p.livesAt ).city
       else ""
     )
     stats.write(now() - start, "showPerson")
-    p.name ++ suffix
+    result
   }
 }

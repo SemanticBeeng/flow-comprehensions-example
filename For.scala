@@ -10,7 +10,7 @@ object DAO{
   def addressById(id: Int): Task[Address] = ???
 }
 
-object For extends App{
+object Main extends App{
 
   println( showPerson(1).unsafePerformSync )
 
