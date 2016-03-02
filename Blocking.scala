@@ -1,29 +1,29 @@
 package blocking
 import lib._
-//import scalaz.concurrent.Task
+import scalaz.concurrent.Task
 
 case class Person(name: String, livesAt: Int, isRich: Boolean)
 case class Address(city: String)
 
 object DAO{
-  def personById(id: Int):  Person = ???
-  def addressById(id: Int): Address = ???
+  def personById(id: Int):  Person = Person( "Silvio", 1, true )
+  def addressById(id: Int): Address = Address( "Rome" )
 }
 
 object Main extends App{
 
-  println( showPerson(1) )
+  println( showPerson(1).unsafePerformSync )
 
-  def showPerson(id: Int): String = {
+  def showPerson(id: Int): Task[String] = {
     val start = now()
-    val p = DAO.personById(id)
-    logger.log("retrieved person")
+    val p = DAO.personById( id )
+    logger.log( "retrieved person" )
     val result = p.name ++ (
-      if(p.isRich)
+      if( p.isRich )
         " is rich and lives in " ++ DAO.addressById( p.livesAt ).city
       else ""
     )
-    stats.write(now() - start, "showPerson")
+    stats.write( now() - start, "showPerson" )
     result
   }
 }
