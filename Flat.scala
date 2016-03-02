@@ -7,8 +7,8 @@ case class Person(name: String, livesAt: Int, isRich: Boolean)
 case class Address(city: String)
 
 object DAO{
-  def personById(id: Int):  Task[Person] = Task.now( Person("Silvio", 1, true) )
-  def addressById(id: Int): Task[Address] = Task.now( Address("Rome") )
+  def personById(id: Int):  Task[Person] = Task.now( Person( "Silvio", 1, true ) )
+  def addressById(id: Int): Task[Address] = Task.now( Address( "Rome" ) )
 }
 
 object Main extends App{

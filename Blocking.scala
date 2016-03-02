@@ -2,6 +2,7 @@ package blocking
 import lib._
 import scalaz.concurrent.Task
 
+
 case class Person(name: String, livesAt: Int, isRich: Boolean)
 case class Address(city: String)
 
