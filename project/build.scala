@@ -6,7 +6,7 @@ object MyBuild extends Build{
     settings = Seq(
       scalaVersion := "2.11.7",
       libraryDependencies ++= Seq(
-        "org.scala-comprehensions" %% "flow-comprehensions" % "0.0.3",
+        "org.scala-comprehensions" %% "flow-comprehensions" % "0.0.4-SNAPSHOT",
         "org.scalaz" %% "scalaz-concurrent" % "7.2.0"
       ),
       scalacOptions ++= Seq("-deprecation")
