@@ -12,9 +12,9 @@ object DAO{
 
 object Main extends App{
 
-  println( showPerson(1).unsafePerformSync )
+  println( showPerson(1) )
 
-  def showPerson(id: Int): Task[String] = {
+  def showPerson(id: Int): String = {
     val start = now()
     val p = DAO.personById( id )
     logger.log( "retrieved person" )
